@@ -41,7 +41,7 @@ public static class DependencyInjection
                 options.LoginPath = "/Identity/Account/Login";
             });
         }
-
+        
         services.AddScoped<IProjectRepository, ProjectRepository>();
         services.AddScoped<ITaskItemRepository, TaskItemRepository>();
         services.AddScoped<IUserRepository, UserRepository>();

@@ -44,21 +44,38 @@ public class TasksController : ControllerBase
 
         var tasks = await _taskItemRepository.GetByUsernameAsync(auth.UserId);
 
-        return Ok(tasks);
+        var tasksEnriched = await _taskItemRepository.EnrichListAsync(tasks);
+
+        return Ok(tasksEnriched);
     }
 
     [HttpGet("{key}")]
     public async Task<IActionResult> Get([FromRoute] string key)
     {
         var taskItem = await _taskItemRepository.GetByKeyAsync(key);
-        var whichProject = taskItem?.ProjectKey;
+        var whichProject = taskItem?.Project;
 
-        var auth = await _userContext.GetAuthorizations(User, whichProject);
+        var auth = await _userContext.GetAuthorizations(User, whichProject?.Key);
 
         if (!auth.IsOwner & !auth.IsParticipant)
             return Unauthorized();
 
         return Ok(taskItem);
+    }
+    [HttpGet("{key}/details")]
+    public async Task<IActionResult> Details([FromRoute] string key)
+    {
+        var taskItem = await _taskItemRepository.GetByKeyAsync(key);
+        var whichProject = taskItem?.Project;
+
+        var auth = await _userContext.GetAuthorizations(User, whichProject?.Key);
+
+        if (!auth.IsOwner & !auth.IsParticipant)
+            return Unauthorized();
+
+        var taskItemEnriched = await _taskItemRepository.EnrichAsync(taskItem);
+
+        return Ok(taskItemEnriched);
     }
 
     [HttpPatch("{key}")]
@@ -67,13 +84,18 @@ public class TasksController : ControllerBase
         [FromBody] TaskChangeDTO body
     )
     {
+        var auth = await _userContext.GetAuthorizations(User, key);
+
+        if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
+            return Unauthorized();
+
         var operation = body.operation;
         var value = body.value;
 
         var operations = new List<string> { "assign", "complete" };
 
-        if (operation is null || 
-            !operation.Contains(operation) ||
+        if (string.IsNullOrWhiteSpace(operation) || 
+            !operations.Contains(operation) ||
             operation == operations[0] && value is null)
             return BadRequest("Request parameters could not be resolved");
 
@@ -84,5 +106,23 @@ public class TasksController : ControllerBase
             Message = "Changes applied",
             Task = task,
         });
+    }
+    [HttpPatch("{key}/comment")]
+    public async Task<IActionResult> Comment(
+        [FromRoute] string key,
+        [FromBody] string body
+    )
+    {
+        var auth = await _userContext.GetAuthorizations(User, key);
+
+        if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
+            return Unauthorized();
+
+        var ok = await _taskItemRepository.CommentAsync(body, key, auth.UserId);
+
+        if (ok is null)
+            return BadRequest("Request parameters could not be resolved");
+        
+        return Ok(ok);
     }
 }

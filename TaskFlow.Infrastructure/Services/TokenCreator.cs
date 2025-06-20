@@ -58,4 +58,12 @@ public class TokenCreator : ITokenCreator
         var tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
         return tokenStr;
     }
+    public async Task<ClaimsPrincipal> DecodeToken(string token)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
+        var identity = new ClaimsIdentity(jwtToken.Claims, "jwt");
+
+        return new ClaimsPrincipal(identity);
+    }
 }

@@ -91,7 +91,7 @@ public class ProjectRepository : IProjectRepository
 
     public async Task<Project?> GetByIdAsync(string projectKey)
     {
-        Project? result = result = await _context.Projects
+        Project? result = await _context.Projects
             .FirstOrDefaultAsync(p => p.Key == projectKey);
 
         return result;

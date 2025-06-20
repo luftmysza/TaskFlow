@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaskFlow.Admin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9dfd9029dd66aaeabbc3064bb5cdbd67e692d65")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaskFlow.Admin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaskFlow.Admin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

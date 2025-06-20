@@ -4,6 +4,9 @@ using TaskFlow.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 using TaskFlow.Application.DTOs;
 using TaskFlow.Infrastructure.Config;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace TaskFlow.Infrastructure.Repositories;
 public class TaskItemRepository : ITaskItemRepository
@@ -21,6 +24,27 @@ public class TaskItemRepository : ITaskItemRepository
     {
         await _context.TaskItems.AddAsync(task);
         await _context.SaveChangesAsync();
+    }
+    public async Task<string?> AddAsync(TaskItemCreateDTO taskDTO, string projectKey)
+    {
+        Project? project = await _projectRepository.GetByIdAsync(projectKey);
+        if (project is null) 
+            return null;
+        ApplicationUser? assignee  = await _userRepository.GetByUsernameAsync(taskDTO.Assignee);
+
+        TaskItem task = new()
+        {
+            TaskKey = project.GenerateNextTaskKey(),
+            Title = taskDTO.Title,
+            Description = taskDTO.Description,
+            Project = project,
+            Assignee = assignee
+        };
+
+        await _context.TaskItems.AddAsync(task);
+        await _context.SaveChangesAsync();
+
+        return task.TaskKey;
     }
     public async Task<int> CountAsync()
     {
@@ -54,6 +78,8 @@ public class TaskItemRepository : ITaskItemRepository
     public async Task<TaskItem?> GetByKeyAsync(string taskKey)
     {
         TaskItem? result = await _context.TaskItems
+            .Include(ti => ti.Project)
+            .Include(ti => ti.Assignee)
             .FirstOrDefaultAsync(ti => ti.TaskKey == taskKey);
 
         return result;
@@ -85,6 +111,66 @@ public class TaskItemRepository : ITaskItemRepository
         }
 
         await _context.SaveChangesAsync();
+
+        return result;
+    }
+    public async Task<Comment?> CommentAsync(string text, string taskKey, string username)
+    {
+        ApplicationUser? user = await _userRepository.GetByUsernameAsync(username);
+        TaskItem? taskObject = await GetByKeyAsync(taskKey);
+        if (user is null || taskObject is null)
+            return null;
+
+        Comment comment = new Comment()
+        {
+            Text = text,
+            User = user,
+            Task = taskObject
+        };
+
+        await _context.Comments.AddAsync(comment);
+
+        await NotifyAssignee(comment, taskObject, user);
+
+        await _context.SaveChangesAsync();
+
+        return comment;
+    }
+
+    private async Task NotifyAssignee(Comment comment, TaskItem task, ApplicationUser user)
+    {
+        if (user == task?.Assignee) return;
+
+        task?.Assignee?.UnreadComments?.Push(comment);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<List<TaskItemDetailsDTO>>? EnrichListAsync(IEnumerable<TaskItem> tasks)
+    {
+
+        var enriched = tasks.Select(t => EnrichAsync(t));
+
+        var result = await Task.WhenAll(enriched);
+        return result.ToList();
+    }
+    public async Task<TaskItemDetailsDTO>? EnrichAsync(TaskItem task)
+    {
+        TaskItemDetailsDTO? result = await _context.TaskItems
+            .Where(t => t.TaskKey == task.TaskKey)
+            .Include(t => t.Comments)
+            .Select(t => new TaskItemDetailsDTO
+            {
+                TaskKey = t.TaskKey,
+                Title = t.Title,
+                Description = t.Description,
+                StatusText = t.StatusText,
+                IsCompleted = t.IsCompleted,
+                Assignee = t.Assignee == null ? "" : t.Assignee.UserName,
+                CreatedAt = t.CreatedAt,
+                DoneAt = t.DoneAt,
+                Comments = t.Comments == null ? new List<Comment>() : t.Comments.ToList()
+            })
+            .FirstOrDefaultAsync();
 
         return result;
     }

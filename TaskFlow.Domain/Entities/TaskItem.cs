@@ -18,7 +18,7 @@ public class TaskItem
     public string TaskKey { get; set; } = null!;
     public string Title { get; set; } = null!;
     public string? Description { get; set; }
-    public bool IsCompleted { get; set; }
+    public bool IsCompleted { get; set; } = false;
     public TaskStatus Status { get; set; } = TaskStatus.New;
     public string StatusText => Status.GetDisplayName();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

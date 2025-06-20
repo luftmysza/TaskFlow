@@ -72,7 +72,7 @@ public class ProjectsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] NewProjectDTO body)
     {
         var auth = await _userContext.GetAuthorizations(User, null);
-
+        
         string key = body.projectKey.ToUpper();
         List<string> usernames = body.userNames;
 
@@ -86,10 +86,10 @@ public class ProjectsController : ControllerBase
         List<string> foundUsernames = found.Select(f => f.UserName).ToList();
         var missingUsernames = usernames.Except(foundUsernames).ToList();
 
-        ICollection<UserProject> addUserProject = foundUsernames.Select(waUsername => new UserProject
+        ICollection<UserProject> addUserProject = found.Select(u => new UserProject
         {
-            UserName = waUsername,
-            ProjectKey = key,
+            User = u,
+            Project = addProject,
             Role = ProjectRole.Participant
         }
         ).ToList();
@@ -126,6 +126,28 @@ public class ProjectsController : ControllerBase
         {
             result = "project deleted",
             OldKey = key
+        });
+    }
+    [HttpPost("{key}/AddTask")]
+    public async Task<IActionResult> AddTask(
+        [FromRoute] string key,
+        [FromBody] TaskItemCreateDTO body
+        )
+    {
+        var auth = await _userContext.GetAuthorizations(User, key);
+
+        if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
+            return Unauthorized();
+
+        string? created = await _taskItemRepository.AddAsync(body, key);
+
+        if (created is null)
+            return BadRequest("Parameters could not be resolved");
+        
+        return Ok(new
+        {
+            result = "TaskItem created",
+            Key = created
         });
     }
 }
