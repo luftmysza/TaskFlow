@@ -1,0 +1,123 @@
+[
+  {
+    "ContainingType": "TaskFlow.API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "taskflow/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "TaskFlow.Application.DTOs.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
+    "Method": "Details",
+    "RelativePath": "taskflow/Projects/{key}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
+    "Method": "Delete",
+    "RelativePath": "taskflow/Projects/{key}/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
+    "Method": "Create",
+    "RelativePath": "taskflow/Projects/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "body",
+        "Type": "TaskFlow.Application.DTOs.NewProjectDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
+    "Method": "List",
+    "RelativePath": "taskflow/Projects/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.TasksController",
+    "Method": "Get",
+    "RelativePath": "taskflow/Tasks/{key}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.TasksController",
+    "Method": "Edit",
+    "RelativePath": "taskflow/Tasks/{key}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "TaskFlow.Application.DTOs.TaskChangeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.TasksController",
+    "Method": "ListMyTasks",
+    "RelativePath": "taskflow/Tasks/mine",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

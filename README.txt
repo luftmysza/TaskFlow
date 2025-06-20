@@ -1,0 +1,7 @@
+Project operations:
+1. List (those you are member of)
+2. Details
+3  Create (adds user as PM automatically, allows a list of usernames to be sent and added at creation)
+4. Delete (for project owner)
+
+	eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IkR6bWl0cnlaYWl0c2F1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDk4NTc3MTIsImlzcyI6IlRhc2tGbG93QVBJIiwiYXVkIjoiVGFza0Zsb3dDbGllbnRzIn0.CJmzIWk58Rxhgw4JVeiz92AxL406vgRPZwHY7jUgQHA

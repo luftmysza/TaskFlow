@@ -1,0 +1,17 @@
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Infrastructure.deps.json
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Infrastructure.dll
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Infrastructure.pdb
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Application.dll
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Domain.dll
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Application.pdb
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\bin\Debug\net8.0\TaskFlow.Domain.pdb
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.AssemblyInfo.cs
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.635E8F59.Up2Date
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.dll
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\refint\TaskFlow.Infrastructure.dll
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\TaskFlow.Infrastructure.pdb
+C:\Users\drboo\Repos\TaskFlow\TaskFlow.Infrastructure\obj\Debug\net8.0\ref\TaskFlow.Infrastructure.dll
