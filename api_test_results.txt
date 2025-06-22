@@ -1,0 +1,42 @@
+TaskFlow API Test Script 
+============================ 
+Logging in as GenericAdmin... 
+Token acquired 
+Bearer token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiR2VuZXJpY0FkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NTA2MDMwMTEsImlzcyI6IlRhc2tGbG93QVBJIiwiYXVkIjoiVGFza0Zsb3dDbGllbnRzIn0.kZ7LZW9594-cm3DTUFTm1wKTpsbpq4luBUygDRUldHI 
+============================ 
+[GET] /projects/list 
+[{"projectKey":"DEMO","owners":["Owner1"]}]
+Status: 200
+ 
+[POST] /projects/create 
+{"result":"Project created","newKey":"TESTPROJ","usersAdded":["User1"],"usersNotFound":[]}
+Status: 200
+ 
+[GET] /projects/testproj 
+{"projectKey":"TESTPROJ","participants":[{"user":"User1","role":"Participant"}],"tasks":[]}
+Status: 200
+ 
+[POST] /projects/testproj/AddTask 
+{"result":"TaskItem created","key":"TESTPROJ-1"}
+Status: 200
+ 
+[GET] /tasks/mine 
+[]
+Status: 200
+ 
+[GET] /tasks/DEMO-1/details 
+{"taskKey":"DEMO-1","title":"First Test Task","description":"do this goddamn project!","statusText":"New","isCompleted":false,"assignee":"DzmitryZaitsau","createdAt":"2025-06-22T13:36:44.8739607Z","comments":[{"text":"Please check this task again.","commentedAt":"2025-06-22T15:36:44.9001397+02:00","userName":"DzmitryZaitsau","taskKey":"DEMO-1"}]}
+Status: 200
+ 
+[PATCH] /tasks/DEMO-1/comment 
+{"text":"Looks good from curl.","commentedAt":"2025-06-22T15:36:54.6480128+02:00","userName":"GenericAdmin","taskKey":"DEMO-1"}
+Status: 200
+ 
+[PATCH] /tasks/testproj-1 (complete) 
+{"message":"Changes applied","task":{"taskKey":"TESTPROJ-1","title":"New API Task","description":"From curl","isCompleted":true,"status":2,"statusText":"Done","createdAt":"2025-06-22T13:36:54.4754605Z","doneAt":"2025-06-22T13:36:55.358839Z","project":{"key":"TESTPROJ","tasks":[null]}}}
+Status: 200
+ 
+[DELETE] /projects/testproj/delete 
+{"result":"Project deleted","oldKey":"TESTPROJ"}
+Status: 200
+ 

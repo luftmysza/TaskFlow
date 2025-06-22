@@ -49,7 +49,7 @@ public class ProjectsController : ControllerBase
         if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
             return Unauthorized();
 
-        var result = await _projectRepository.GetByIdWithDetailsAsync(key);
+        var result = await _projectRepository.GetByIdWithDetailsAsync(key.ToUpper());
         return Ok(result);
     }
 

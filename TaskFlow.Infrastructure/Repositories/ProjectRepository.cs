@@ -48,13 +48,13 @@ public class ProjectRepository : IProjectRepository
 
     public async Task<Project?> GetByIdAsync(string projectKey)
     {
-        return await _context.Projects.FirstOrDefaultAsync(p => p.Key == projectKey);
+        return await _context.Projects.FirstOrDefaultAsync(p => p.Key == projectKey.ToUpper());
     }
 
     public async Task<ProjectDetailstViewDTO?> GetByIdWithDetailsAsync(string projectKey)
     {
         return await _context.Projects
-            .Where(p => p.Key == projectKey)
+            .Where(p => p.Key == projectKey.ToUpper())
             .Select(ToDetailsView())
             .FirstOrDefaultAsync();
     }
@@ -78,12 +78,12 @@ public class ProjectRepository : IProjectRepository
     public async Task<bool> UserHasAccessAsync(string username, string projectKey)
     {
         var user = await _userRepository.GetByUsernameAsync(username);
-        return await _context.UserProjects.AnyAsync(up => up.Project.Key == projectKey && up.User == user);
+        return await _context.UserProjects.AnyAsync(up => up.Project.Key == projectKey.ToUpper() && up.User == user);
     }
 
     public async Task<bool> ExistsAsync(string projectKey)
     {
-        return await _context.Projects.AnyAsync(p => p.Key == projectKey);
+        return await _context.Projects.AnyAsync(p => p.Key == projectKey.ToUpper());
     }
 
     public async Task<ProjectDetailstViewDTO?> EnrichAsync(Project project)

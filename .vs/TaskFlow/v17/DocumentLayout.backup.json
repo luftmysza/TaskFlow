@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\drboo\\Repos\\TaskFlow\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.api\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|solutionrelative:taskflow.api\\controllers\\taskscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.api\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|solutionrelative:taskflow.api\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|solutionrelative:taskflow.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.infrastructure\\config\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|solutionrelative:taskflow.infrastructure\\config\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.infrastructure\\repositories\\taskitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|solutionrelative:taskflow.infrastructure\\repositories\\taskitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.infrastructure\\repositories\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|solutionrelative:taskflow.infrastructure\\repositories\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.infrastructure\\config\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|solutionrelative:taskflow.infrastructure\\config\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 196,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +51,97 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskItemRepository.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Repositories\\TaskItemRepository.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Infrastructure\\Repositories\\TaskItemRepository.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Repositories\\TaskItemRepository.cs",
+              "RelativeToolTip": "TaskFlow.Infrastructure\\Repositories\\TaskItemRepository.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAnwKUAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T13:33:32.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectRepository.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Repositories\\ProjectRepository.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Infrastructure\\Repositories\\ProjectRepository.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Repositories\\ProjectRepository.cs",
+              "RelativeToolTip": "TaskFlow.Infrastructure\\Repositories\\ProjectRepository.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAA+wIIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T13:22:59.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Config\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Infrastructure\\Config\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Config\\DependencyInjection.cs",
+              "RelativeToolTip": "TaskFlow.Infrastructure\\Config\\DependencyInjection.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T13:16:48.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Config\\DbSeeder.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Infrastructure\\Config\\DbSeeder.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Config\\DbSeeder.cs",
+              "RelativeToolTip": "TaskFlow.Infrastructure\\Config\\DbSeeder.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAD4vyQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T13:16:21.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "TaskFlow.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "TaskFlow.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswCkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T12:58:23.333Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TasksController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\TasksController.cs",
+              "RelativeDocumentMoniker": "TaskFlow.API\\Controllers\\TasksController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\TasksController.cs",
+              "RelativeToolTip": "TaskFlow.API\\Controllers\\TasksController.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAMwE4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T12:32:01.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "TaskFlow.API\\Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "TaskFlow.API\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAC0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-22T12:31:59.196Z",
+              "EditorCaption": ""
             }
           ]
         },

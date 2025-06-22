@@ -26,11 +26,13 @@ public static class DbSeeder
                 await roleManager.CreateAsync(new IdentityRole(role));
         }
 
-        var me = await CreateUserIfNotExists(userManager, "DzmitryZaitsau", "Password1!");
-        var owner = await CreateUserIfNotExists(userManager, "Admin1", "Owner123!");
-        var user = await CreateUserIfNotExists(userManager, "User1", "User123!");
+        var me = await CreateUserIfNotExists(userManager, "DzmitryZaitsau", "Password1");
+        var admin = await CreateUserIfNotExists(userManager, "GenericAdmin", "Password1");
+        var owner = await CreateUserIfNotExists(userManager, "Owner1", "Password1");
+        var user = await CreateUserIfNotExists(userManager, "User1", "Password1");
 
         await userManager.AddToRoleAsync(me, "Admin");
+        await userManager.AddToRoleAsync(admin, "Admin");
         await userManager.AddToRoleAsync(owner, "User");
         await userManager.AddToRoleAsync(user, "User");
 

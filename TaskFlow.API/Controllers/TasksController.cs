@@ -1,4 +1,3 @@
-// Refactored TasksController.cs
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskFlow.Application.DTOs;
@@ -52,7 +51,8 @@ public class TasksController : ControllerBase
     [HttpPatch("{key}")]
     public async Task<IActionResult> Edit([FromRoute] string key, [FromBody] TaskChangeDTO body)
     {
-        var auth = await _userContext.GetAuthorizations(User, key);
+        var projectKey = key.Split("-")[0];
+        var auth = await _userContext.GetAuthorizations(User, projectKey);
         if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
             return Unauthorized();
 

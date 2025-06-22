@@ -23,7 +23,7 @@ public class TaskItemRepository : ITaskItemRepository
 
     public async Task<string?> AddAsync(TaskItemCreateDTO taskDTO, string projectKey)
     {
-        var project = await _projectRepository.GetByIdAsync(projectKey);
+        var project = await _projectRepository.GetByIdAsync(projectKey.ToUpper());
         if (project == null) return null;
 
         var assignee = await _userRepository.GetByUsernameAsync(taskDTO.Assignee);
@@ -64,7 +64,7 @@ public class TaskItemRepository : ITaskItemRepository
     public async Task<List<TaskItemDetailsDTO>> GetAllByProjectKeyAsync(string projectKey)
     {
         return await _context.TaskItems
-            .Where(t => t.Project.Key == projectKey)
+            .Where(t => t.Project.Key == projectKey.ToUpper())
             .Select(ToDetailsDTO())
             .ToListAsync();
     }
@@ -74,7 +74,7 @@ public class TaskItemRepository : ITaskItemRepository
         return await _context.TaskItems
             .Include(t => t.Project)
             .Include(t => t.Assignee)
-            .FirstOrDefaultAsync(t => t.TaskKey == taskKey);
+            .FirstOrDefaultAsync(t => t.TaskKey == taskKey.ToUpper());
     }
 
     public async Task<TaskItem?> UpdateAsync(TaskItem task, TaskChangeDTO body)
@@ -98,7 +98,7 @@ public class TaskItemRepository : ITaskItemRepository
     public async Task<CommentDTO?> CommentAsync(string text, string taskKey, string username)
     {
         var user = await _userRepository.GetByUsernameAsync(username);
-        var task = await GetByKeyAsync(taskKey);
+        var task = await GetByKeyAsync(taskKey.ToUpper());
         if (user is null || task is null || task.IsCompleted == true) return null;
 
         var comment = new Comment
