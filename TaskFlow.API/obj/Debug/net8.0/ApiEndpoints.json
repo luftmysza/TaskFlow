@@ -33,6 +33,27 @@
   },
   {
     "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
+    "Method": "AddTask",
+    "RelativePath": "taskflow/Projects/{key}/AddTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "TaskFlow.Application.DTOs.TaskItemCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.ProjectsController",
     "Method": "Delete",
     "RelativePath": "taskflow/Projects/{key}/delete",
     "HttpMethod": "DELETE",
@@ -75,22 +96,6 @@
   },
   {
     "ContainingType": "TaskFlow.API.Controllers.TasksController",
-    "Method": "Get",
-    "RelativePath": "taskflow/Tasks/{key}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "key",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TaskFlow.API.Controllers.TasksController",
     "Method": "Edit",
     "RelativePath": "taskflow/Tasks/{key}",
     "HttpMethod": "PATCH",
@@ -105,6 +110,43 @@
       {
         "Name": "body",
         "Type": "TaskFlow.Application.DTOs.TaskChangeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.TasksController",
+    "Method": "Comment",
+    "RelativePath": "taskflow/Tasks/{key}/comment",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "body",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TaskFlow.API.Controllers.TasksController",
+    "Method": "Details",
+    "RelativePath": "taskflow/Tasks/{key}/details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "key",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

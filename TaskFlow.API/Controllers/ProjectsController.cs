@@ -1,15 +1,9 @@
-using System.Security.Claims;
-using System.Data;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TaskFlow.Domain.Entities;
 using TaskFlow.Application.DTOs;
 using TaskFlow.Application.Repositories;
 using TaskFlow.Application.Services;
-using TaskFlow.Infrastructure.Config;
-using TaskFlow.Infrastructure.Repositories;
+using TaskFlow.Domain.Entities;
 
 namespace TaskFlow.API.Controllers;
 
@@ -25,10 +19,9 @@ public class ProjectsController : ControllerBase
 
     public ProjectsController(
         IProjectRepository projectRepository,
-        ITaskItemRepository taskItemRepository, 
+        ITaskItemRepository taskItemRepository,
         IUserRepository userRepository,
-        IUserContext userContext
-    )
+        IUserContext userContext)
     {
         _userRepository = userRepository;
         _taskItemRepository = taskItemRepository;
@@ -41,18 +34,11 @@ public class ProjectsController : ControllerBase
     {
         var auth = await _userContext.GetAuthorizations(User, null);
 
-        if (auth.IsAdmin)
-        {
-            var result = _projectRepository.GetAllAsync();
-               
-            return Ok(result);
-        }
-        else
-        {
-            var result = _projectRepository.GetAllByUserIdAsync(auth.UserId);
+        var result = auth.IsAdmin
+            ? await _projectRepository.GetAllAsync()
+            : null;
 
-            return Ok(result);
-        }
+        return Ok(result);
     }
 
     [HttpGet("{key}")]
@@ -63,8 +49,7 @@ public class ProjectsController : ControllerBase
         if (!auth.IsOwner && !auth.IsParticipant && !auth.IsAdmin)
             return Unauthorized();
 
-        var result = _projectRepository.GetByIdWithDetailsAsync(key);
-
+        var result = await _projectRepository.GetByIdWithDetailsAsync(key);
         return Ok(result);
     }
 
@@ -72,31 +57,28 @@ public class ProjectsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] NewProjectDTO body)
     {
         var auth = await _userContext.GetAuthorizations(User, null);
-        
+
         string key = body.projectKey.ToUpper();
         List<string> usernames = body.userNames;
 
-        bool keyExists = await _projectRepository.ExistsAsync(key);
-        if (keyExists)
+        if (await _projectRepository.ExistsAsync(key))
             return BadRequest("Project key already in use!");
 
-        Project addProject = new Project { Key = key };
-
-        List<ApplicationUser>? found = await _userRepository.GetListByUsernameAsync(usernames);
-        List<string> foundUsernames = found.Select(f => f.UserName).ToList();
+        var users = await _userRepository.GetListByUsernameAsync(usernames);
+        var foundUsernames = users.Select(u => u.UserName).ToList();
         var missingUsernames = usernames.Except(foundUsernames).ToList();
 
-        ICollection<UserProject> addUserProject = found.Select(u => new UserProject
+        var project = new Project
         {
-            User = u,
-            Project = addProject,
-            Role = ProjectRole.Participant
-        }
-        ).ToList();
+            Key = key,
+            UserProjects = users.Select(u => new UserProject
+            {
+                User = u,
+                Role = ProjectRole.Participant
+            }).ToList()
+        };
 
-        addProject.UserProjects = addUserProject;
-
-        await _projectRepository.AddAsync(addProject);
+        await _projectRepository.AddAsync(project);
 
         return Ok(new
         {
@@ -112,27 +94,28 @@ public class ProjectsController : ControllerBase
     {
         var auth = await _userContext.GetAuthorizations(User, null);
 
-        if (!auth.IsOwner && !auth.IsAdmin) return Unauthorized();
+        if (!auth.IsOwner && !auth.IsAdmin)
+            return Unauthorized();
 
         key = key.ToUpper();
-        Project? deleteProject = await _projectRepository.GetByIdAsync(key);
+        var project = await _projectRepository.GetByIdAsync(key);
 
-        if (deleteProject is null)
+        if (project == null)
             return BadRequest("Project does not exist!");
 
-        await _projectRepository.DeleteAsync(deleteProject);
+        await _projectRepository.DeleteAsync(project);
 
         return Ok(new
         {
-            result = "project deleted",
+            result = "Project deleted",
             OldKey = key
         });
     }
+
     [HttpPost("{key}/AddTask")]
     public async Task<IActionResult> AddTask(
         [FromRoute] string key,
-        [FromBody] TaskItemCreateDTO body
-        )
+        [FromBody] TaskItemCreateDTO body)
     {
         var auth = await _userContext.GetAuthorizations(User, key);
 
@@ -143,7 +126,7 @@ public class ProjectsController : ControllerBase
 
         if (created is null)
             return BadRequest("Parameters could not be resolved");
-        
+
         return Ok(new
         {
             result = "TaskItem created",

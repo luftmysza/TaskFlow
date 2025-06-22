@@ -26,7 +26,16 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        var projects = await _projectRepository.GetAllAsync();
-        Projects = await _projectRepository.EnrichListAsync(projects);
+        var projects = await _projectRepository.GetAllAsync(); 
+
+        var keys = projects.Select(p => p.ProjectKey).ToList();
+
+        var projectEntities = await Task.WhenAll(
+            keys.Select(key => _projectRepository.GetByIdAsync(key))
+        );
+
+        var projectsFinalized = await _projectRepository.EnrichListAsync(projectEntities.Where(p => p != null)!);
+
+        Projects = projectsFinalized;
     }
 }

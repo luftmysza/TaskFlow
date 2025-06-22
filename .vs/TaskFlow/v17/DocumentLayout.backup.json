@@ -1,59 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\drboo\\Repos\\TaskFlow\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{61E4DD5C-BFB7-4A71-9048-59214181516B}|TaskFlow.SOAP\\TaskFlow.SOAP.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.soap\\services\\commetssoapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{61E4DD5C-BFB7-4A71-9048-59214181516B}|TaskFlow.SOAP\\TaskFlow.SOAP.csproj|solutionrelative:taskflow.soap\\services\\commetssoapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E902214A-2958-46B3-941A-17A0D497C4B0}|TaskFlow.API\\TaskFlow.API.csproj|solutionrelative:taskflow.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.infrastructure\\authentication\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE6C861E-7836-4FE6-8F73-B881D4014944}|TaskFlow.Infrastructure\\TaskFlow.Infrastructure.csproj|solutionrelative:taskflow.infrastructure\\authentication\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C09F6F7B-E6F9-4814-A397-BF83A87AD513}|TaskFlow.Application\\TaskFlow.Application.csproj|c:\\users\\drboo\\repos\\taskflow\\taskflow.application\\services\\icommetssoapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C09F6F7B-E6F9-4814-A397-BF83A87AD513}|TaskFlow.Application\\TaskFlow.Application.csproj|solutionrelative:taskflow.application\\services\\icommetssoapservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 196,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "TaskFlow.API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "TaskFlow.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAwC8AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:41:13.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginHandler.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Authentication\\LoginHandler.cs",
-              "RelativeDocumentMoniker": "TaskFlow.Infrastructure\\Authentication\\LoginHandler.cs",
-              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Infrastructure\\Authentication\\LoginHandler.cs",
-              "RelativeToolTip": "TaskFlow.Infrastructure\\Authentication\\LoginHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:41:11.344Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -65,38 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICommetsSoapService.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\ICommetsSoapService.cs",
-              "RelativeDocumentMoniker": "TaskFlow.Application\\Services\\ICommetsSoapService.cs",
-              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\ICommetsSoapService.cs",
-              "RelativeToolTip": "TaskFlow.Application\\Services\\ICommetsSoapService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:11:52.745Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CommetsSoapService.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.SOAP\\Services\\CommetsSoapService.cs",
-              "RelativeDocumentMoniker": "TaskFlow.SOAP\\Services\\CommetsSoapService.cs",
-              "ToolTip": "C:\\Users\\drboo\\Repos\\TaskFlow\\TaskFlow.SOAP\\Services\\CommetsSoapService.cs",
-              "RelativeToolTip": "TaskFlow.SOAP\\Services\\CommetsSoapService.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T11:14:09.088Z",
-              "EditorCaption": ""
             }
           ]
         },

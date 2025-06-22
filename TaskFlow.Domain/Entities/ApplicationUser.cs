@@ -6,8 +6,9 @@ namespace TaskFlow.Domain.Entities;
 public class ApplicationUser : IdentityUser
 {
     public override string UserName { get; set; } = null!;
-    public ICollection<UserProject>? UserProjects { get; set; }
-    public ICollection<TaskItem>? AssignedTasks { get; set; }
-    public ICollection<Comment>? Comments { get; set; }
-    public Stack<Comment>? UnreadComments { get; set; }
+    public ICollection<UserProject>? UserProjects { get; set; } = null!;
+    public ICollection<TaskItem>? AssignedTasks { get; set; } = null!;
+    public ICollection<Comment>? Comments { get; set; } = null!;
+    public ICollection<UserUnreadComment> UnreadComments { get; set; } = new List<UserUnreadComment>();
+
 }

@@ -1,26 +1,38 @@
+﻿using SoapCore;
+using SoapCore.ServiceModel;
+using SoapCore.Serializer;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using TaskFlow.Application.Services;
-using TaskFlow.Infrastructure.Config;
 using TaskFlow.SOAP.Services;
+using TaskFlow.Infrastructure.Config;
 
-namespace TaskFlow.SOAP;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddSoapCore();
+builder.Services.AddScoped<ICommentsSoapService, CommentsSoapService>();
 
-public class Program
+builder.Services.AddPolicies();
+
+var app = builder.Build();
+
+//custom
+await app.SeedDataAsync();
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
 {
-    public static void Main(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
+    endpoints.UseSoapEndpoint<ICommentsSoapService>(
+        "/CommentsSoapService.asmx",
+        new[] {
+            new SoapEncoderOptions
+            {
+                MessageVersion = MessageVersion.Soap11,
+                WriteEncoding = System.Text.Encoding.UTF8
+            }
+        },
+        SoapSerializer.DataContractSerializer);
+});
 
-        builder.Services.AddInfrastructure(builder.Configuration, "SOAP");
-        
-        builder.Services.AddScoped<ICommentsSoapService, CommentsSoapService>();
-        
-        builder.Services.AddHttpContextAccessor();
-
-        var app = builder.Build();
-
-
-        app.MapGet("/", () => "Hello World!");
-
-        app.Run();
-    }
-}
+app.Run();

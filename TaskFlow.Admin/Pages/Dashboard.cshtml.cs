@@ -60,7 +60,9 @@ namespace TaskFlow.Admin.Pages
                 return LocalRedirect("/");
             }
 
-            await _projectRepository.AddAsync(NewProject);
+            Project projectFinalized = new Project() {Key = NewProject.ProjectKey};
+
+            await _projectRepository.AddAsync(projectFinalized);
 
             TempData["SuccessMessage"] = "Project created.";
             return LocalRedirect("/");
@@ -76,8 +78,9 @@ namespace TaskFlow.Admin.Pages
                 TempData["ErrorMessage"] = "Invalid user, project, or role.";
                 return RedirectToAction("/Dashboard");
             }
+            Project projectFinalized = await _projectRepository.GetByIdAsync(project.ProjectKey);
 
-            await _projectRepository.AddParticipantAsync(project, user, role);
+            await _projectRepository.AddParticipantAsync(projectFinalized, user, role);
 
             TempData["SuccessMessage"] = $"User {user.UserName} assigned to project {project.ProjectKey} as {(role == ProjectRole.Owner ? "Owner" : "Participant")} .";
             return RedirectToAction("/Dashboard");

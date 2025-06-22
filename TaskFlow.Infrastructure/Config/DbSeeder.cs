@@ -44,7 +44,6 @@ public static class DbSeeder
             context.Projects.Add(project);
             await context.SaveChangesAsync();
 
-            // 4. Add user-project roles
             context.UserProjects.AddRange(new[]
             {
                 new UserProject
@@ -61,7 +60,6 @@ public static class DbSeeder
                 }
             });
 
-            // 5. Add a few tasks
             context.TaskItems.Add(new TaskItem
             {
                 TaskKey = project.GenerateNextTaskKey(),
@@ -70,6 +68,23 @@ public static class DbSeeder
                 Project = project,
                 Assignee = me,
                 Status = Domain.Entities.TaskStatus.New
+            });
+            await context.SaveChangesAsync();
+
+            var task = context.TaskItems.First();
+            var comment = new Comment
+            {
+                Text = "Please check this task again.",
+                Task = task,
+                User = me 
+            };
+            context.Comments.Add(comment);
+            await context.SaveChangesAsync();
+
+            context.UnreadComments.Add(new UserUnreadComment
+            {
+                User = user,
+                Comment = comment
             });
 
             await context.SaveChangesAsync();

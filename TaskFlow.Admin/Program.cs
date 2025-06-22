@@ -3,34 +3,38 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TaskFlow.Infrastructure.Authorization;
 
-namespace TaskFlow.Admin
+namespace TaskFlow.Admin;
+
+public class Program
 {
-    public class Program
+    public async static Task Main(string[] args)
     {
-        public async static Task Main(string[] args)
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddInfrastructure(builder.Configuration);
+        builder.Services.AddPolicies();
+
+        builder.Services.ConfigureApplicationCookie(options =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            options.LoginPath = "/Identity/Account/Login";
+        }); 
 
-            builder.Services.AddInfrastructure(builder.Configuration, "Razor");
-            builder.Services.AddPolicies();
+        builder.Services.AddRazorPages();
 
-            builder.Services.AddRazorPages();
+        var app = builder.Build();
+        
+        await app.SeedDataAsync();
 
-            var app = builder.Build();
-            
-            await app.SeedDataAsync();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+        app.UseRouting();
 
-            app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+        app.MapRazorPages();
 
-            app.MapRazorPages();
-
-            app.Run();
-        }
+        app.Run();
     }
 }

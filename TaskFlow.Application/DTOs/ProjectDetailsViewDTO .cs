@@ -15,5 +15,5 @@ public class ProjectDetailstViewDTO
     [Display(Name = "Participants")]
     public List<ParticipantDTO> Participants { get; set; } = new();
     [Display(Name = "Tasks")]
-    public List<TaskItemDTO> Tasks { get; set; } = new();
+    public List<TaskItemDetailsDTO> Tasks { get; set; } = new();
 }

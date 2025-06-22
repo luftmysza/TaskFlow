@@ -16,7 +16,7 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<TaskItem> TaskItems { get; set; }
     public DbSet<ApplicationUser> Users { get; set; }
     public DbSet<Comment> Comments { get; set; }
-
+    public DbSet<UserUnreadComment> UnreadComments { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -36,11 +36,9 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
         modelBuilder.Entity<Comment>()
            .Property<string>("UserName");
 
-        // Project PK
         modelBuilder.Entity<Project>()
             .HasKey(p => p.Key);
 
-        // UserProject composite key
         modelBuilder.Entity<UserProject>()
             .HasKey("UserName", "ProjectKey");
 
@@ -56,11 +54,9 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
             .HasForeignKey("ProjectKey")
             .OnDelete(DeleteBehavior.Cascade);
 
-        // TaskItem PK
         modelBuilder.Entity<TaskItem>()
             .HasKey(t => t.TaskKey);
 
-        // TaskItem → Project (many-to-one)
         modelBuilder.Entity<TaskItem>()
             .HasOne(t => t.Project)
             .WithMany(p => p.Tasks)
@@ -81,5 +77,18 @@ public class AppDbContext : IdentityDbContext<ApplicationUser>
             .WithMany(u => u.Comments)
             .HasForeignKey("UserName")
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<UserUnreadComment>(entity =>
+        {
+            entity.HasKey("UserId", "CommentId");
+
+            entity.HasOne(uc => uc.User)
+                  .WithMany(u => u.UnreadComments)
+                  .HasForeignKey("UserId");
+
+            entity.HasOne(uc => uc.Comment)
+                  .WithMany(c => c.UnreadByUsers)
+                  .HasForeignKey("CommentId");
+        });
     }
 }

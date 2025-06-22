@@ -123,6 +123,47 @@
         }
       }
     },
+    "/taskflow/Projects/{key}/AddTask": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskItemCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/taskflow/Tasks/mine": {
       "get": {
         "tags": [
@@ -135,7 +176,7 @@
         }
       }
     },
-    "/taskflow/Tasks/{key}": {
+    "/taskflow/Tasks/{key}/details": {
       "get": {
         "tags": [
           "Tasks"
@@ -155,7 +196,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/taskflow/Tasks/{key}": {
       "patch": {
         "tags": [
           "Tasks"
@@ -185,6 +228,47 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/TaskChangeDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/taskflow/Tasks/{key}/comment": {
+      "patch": {
+        "tags": [
+          "Tasks"
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
               }
             }
           }
@@ -238,6 +322,24 @@
             "nullable": true
           },
           "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskItemCreateDTO": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "assignee": {
             "type": "string",
             "nullable": true
           }

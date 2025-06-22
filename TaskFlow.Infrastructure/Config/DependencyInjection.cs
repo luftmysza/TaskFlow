@@ -18,7 +18,7 @@ namespace TaskFlow.Infrastructure.Config;
 public static class DependencyInjection
 {
     private static readonly InMemoryDatabaseRoot _dbRoot = new();
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config, string? app = "API")
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
         services.AddDbContext<AppDbContext>(options =>
            options.UseInMemoryDatabase("TaskFlowDb", _dbRoot));
@@ -33,14 +33,7 @@ public static class DependencyInjection
         })
         .AddEntityFrameworkStores<AppDbContext>()
         .AddDefaultTokenProviders();
-
-        if (app == "Razor")
-        {
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Identity/Account/Login";
-            });
-        }
+       
         
         services.AddScoped<IProjectRepository, ProjectRepository>();
         services.AddScoped<ITaskItemRepository, TaskItemRepository>();

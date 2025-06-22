@@ -26,6 +26,6 @@ public class TaskItemDetailsDTO
     public DateTime CreatedAt { get; set; } = new();
     [Display(Name = "Done at")]
     public DateTime? DoneAt { get; set; } = null;
-    public List<Comment> Comments { get; set; } = null!;
+    public List<CommentDTO> Comments { get; set; } = null!;
 
 }

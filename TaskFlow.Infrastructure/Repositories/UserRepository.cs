@@ -19,7 +19,13 @@ public class UserRepository : IUserRepository
 
     public async Task<ApplicationUser?> GetByUsernameAsync(string username)
     {
-        ApplicationUser? user = await _userManager.FindByNameAsync(username);
+        ApplicationUser? user = await _userManager.Users
+            .Include(u => u.UserProjects)
+            .Include(u => u.AssignedTasks)
+            .Include(u => u.UnreadComments)
+            .Include(u => u.Comments)
+            .FirstOrDefaultAsync(u => u.UserName == username);
+
         return user;
     }
 
@@ -28,8 +34,12 @@ public class UserRepository : IUserRepository
         usernames ??= Enumerable.Empty<string>();
 
         List<ApplicationUser>? result = await _context.Users
-         .Where(u => usernames.Contains(u.UserName))
-         .ToListAsync();
+            .Include(u => u.UserProjects)
+            .Include(u => u.AssignedTasks)
+            .Include(u => u.UnreadComments)
+            .Include(u => u.Comments)
+            .Where(u => usernames.Contains(u.UserName))
+            .ToListAsync();
 
         return result;
     }
@@ -57,7 +67,12 @@ public class UserRepository : IUserRepository
 
     public async Task<List<ApplicationUser>> GetAllAsync()
     {
-        List<ApplicationUser> result = await _userManager.Users.ToListAsync();
+        List<ApplicationUser> result = await _userManager.Users
+            .Include(u => u.UserProjects)
+            .Include(u => u.AssignedTasks)
+            .Include(u => u.UnreadComments)
+            .Include(u => u.Comments)
+            .ToListAsync();
         
         return result;
     }
